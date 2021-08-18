@@ -22,8 +22,6 @@ The following steps should be taken for growing a disk:
 
 Note that shrinking a disk is a potentially dangerous operation and is currently unsupported by the tool. If this is required, the following *may* work, use at your own risk.
 
-* Modify Program.cs and remove the "if (footerInstance.CurrentSize >= newSize)" check
-
 * Use diskpart / disk management to resize the partition to a size smaller than the current
   * For Windows, check https://technet.microsoft.com/en-us/magazine/gg309169.aspx on how to do this.
   * Some resources for Linux:
