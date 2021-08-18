@@ -2,6 +2,7 @@
 using System.Linq;
 using ByteSizeLib;
 using DiscUtils;
+using DiscUtils.Fat;
 using DiscUtils.Ntfs;
 using DiscUtils.Partitions;
 using DiscUtils.Streams;
@@ -30,12 +31,10 @@ namespace WindowsAzureDiskResizer.Tests.Helpers
                 using (VirtualDisk destDisk = isDynamic ? Disk.InitializeDynamic(fs, Ownership.None, diskSize)
                                                         : Disk.InitializeFixed(fs, Ownership.None, diskSize))
                 {
-                    BiosPartitionTable.Initialize(destDisk, WellKnownPartitionType.WindowsNtfs);
-                    var volumeManager = new VolumeManager(destDisk);
+                    BiosPartitionTable.Initialize(destDisk, WellKnownPartitionType.WindowsFat);
 
-                    using (var destNtfs = NtfsFileSystem.Format(volumeManager.GetLogicalVolumes().FirstOrDefault(), diskName, new NtfsFormatOptions()))
+                    using (var destNtfs = FatFileSystem.FormatPartition(destDisk, 0, diskName))
                     {
-                        destNtfs.NtfsOptions.ShortNameCreation = ShortFileNameOption.Disabled;
                     }
                 }
                 fs.Flush(); // commit everything to the stream before closing

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Blob;
+using Microsoft.Azure.Storage.Auth;
 
 namespace WindowsAzureDiskResizer.Tests.Helpers
 {

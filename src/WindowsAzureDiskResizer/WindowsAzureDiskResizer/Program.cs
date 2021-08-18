@@ -84,9 +84,9 @@ namespace WindowsAzureDiskResizer
         private static void WriteUsage()
         {
             Console.WriteLine("Usage:");
-            Console.WriteLine("   WindowsAzureDiskResizer.exe <size> <bloburl> <accountname> <accountkey>");
+            Console.WriteLine("   WindowsAzureDiskResizer <size> <bloburl> <accountname> <accountkey>");
             Console.WriteLine();
-            Console.WriteLine("     <size>         New disk size in GB");
+            Console.WriteLine("     <size>         New disk size in GiB (1024 MiB = 1 GiB)");
             Console.WriteLine("     <bloburl>      Disk blob URL");
             Console.WriteLine("     <accountname>  Storage account (optional if bloburl contains SAS)");
             Console.WriteLine("     <accountkey>   Storage key (optional if bloburl contains SAS)");

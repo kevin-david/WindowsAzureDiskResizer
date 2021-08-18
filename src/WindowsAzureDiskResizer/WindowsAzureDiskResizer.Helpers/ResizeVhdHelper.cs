@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using ByteSizeLib;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Auth;
+using Microsoft.Azure.Storage.Blob;
 using WindowsAzureDiskResizer.Helpers.DiscUtils;
 
 namespace WindowsAzureDiskResizer.Helpers
@@ -40,7 +40,7 @@ namespace WindowsAzureDiskResizer.Helpers
         /// Returns <see cref="ResizeResult.Success"/> if everything went fine.</returns>
         public ResizeResult ResizeVhdBlob(int newSizeInGb, Uri blobUri, string accountName, string accountKey)
         {
-            NewSize = ByteSize.FromGigaBytes(newSizeInGb);
+            NewSize = ByteSize.FromGibiBytes(newSizeInGb);
 
             // Check if blob exists
             blob = new CloudPageBlob(blobUri);
